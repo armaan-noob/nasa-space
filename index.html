@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AstroCraft</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">NASA Space Apps Challenge 2026</p>
+          <h1>AstroCraft</h1>
+        </div>
+        <div class="header-actions">
+          <button id="tutorial-btn" class="secondary-btn">Quick Tutorial</button>
+          <button id="reset-btn" class="ghost-btn">Reset Mission</button>
+        </div>
+      </header>
+
+      <div class="status-strip" id="resource-summary"></div>
+
+      <section id="mission-console" class="mission-console" aria-live="polite"></section>
+
+      <div id="launch-sequence" class="launch-sequence" aria-live="polite"></div>
+
+      <div id="cinematic-overlay" class="cinematic-overlay hidden" aria-live="polite">
+        <div class="cinematic-backdrop"></div>
+        <div class="cinematic-card">
+          <button id="close-overlay-btn" class="close-overlay-btn" aria-label="Close mission result">×</button>
+          <div class="cinematic-label">Mission outcome</div>
+          <h2 id="cinematic-title">Mission Complete</h2>
+          <p id="cinematic-summary">The spacecraft is on its way.</p>
+          <button id="try-again-btn" class="primary-btn" style="margin-top: 18px;">Try Again</button>
+        </div>
+      </div>
+
+      <main class="layout">
+        <aside class="panel scenario-panel">
+          <div class="panel-header">
+            <h2>Mission Brief</h2>
+          </div>
+          <div id="scenario-panel"></div>
+        </aside>
+
+        <section class="panel designer-panel">
+          <div class="panel-header split">
+            <h2>Mission Design Lab</h2>
+            <div class="mode-row">
+              <label>
+                <input type="radio" name="mode" value="solo" checked /> Solo
+              </label>
+              <label>
+                <input type="radio" name="mode" value="team" /> Team
+              </label>
+              <label>
+                <input type="radio" name="mode" value="sandbox" /> Sandbox
+              </label>
+            </div>
+          </div>
+
+          <div class="team-controls hidden" id="team-controls">
+            <label>
+              Team size
+              <select id="team-size">
+                <option value="1">1 Player</option>
+                <option value="2">2 Players</option>
+                <option value="3">3 Players</option>
+                <option value="4">4 Players</option>
+              </select>
+            </label>
+            <div id="team-role-grid" class="team-role-grid"></div>
+          </div>
+
+          <div id="design-panel" class="design-panel"></div>
+
+          <div class="button-row">
+            <button id="validate-btn" class="primary-btn">Validate Mission</button>
+            <button id="simulate-btn" class="primary-btn accent">Simulate Mission</button>
+          </div>
+        </section>
+
+        <aside class="panel insights-panel">
+          <div class="panel-header">
+            <h2>Launch Readiness</h2>
+          </div>
+          <div id="readiness-panel"></div>
+
+          <div class="panel-header compact">
+            <h3>Mission Education</h3>
+          </div>
+          <div id="education-panel" class="education-panel"></div>
+        </aside>
+      </main>
+
+      <section id="results-panel" class="panel results-panel hidden">
+        <div class="panel-header split">
+          <h2>Mission Debrief</h2>
+          <div id="score-badge" class="score-badge">--</div>
+        </div>
+        <div id="result-content"></div>
+      </section>
+    </div>
+
+    <div id="tutorial-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Mission Design Quick Start</h3>
+          <button id="close-tutorial" class="ghost-btn small">Close</button>
+        </div>
+        <ol>
+          <li>Select a mission scenario and read the objective.</li>
+          <li>Pick a launch vehicle, spacecraft, power, comms and trajectory.</li>
+          <li>Check for red warnings in readiness.</li>
+          <li>Run the simulation and adjust the design after the debreif.</li>
+        </ol>
+        <div class="tip-box">
+          <strong>Design tip:</strong> A spacecraft can be reliable and low-mass, but if it cannot return enough data or power its instruments, the mission loses science value.
+        </div>
+      </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="gameLogic.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
